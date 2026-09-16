@@ -1,0 +1,44 @@
+<h1>Lista de Produtos</h1>
+
+<div class="lista-produtos">
+
+  @for (produto of produtos; track produto.id) {
+
+    <div class="produto">
+
+      <div class="imagem-produto">
+        <img
+          [src]="produto.foto"
+          [alt]="produto.nome"
+        >
+      </div>
+
+      <div class="informacoes">
+
+        <h2>{{ produto.nome }}</h2>
+
+        <p class="marca">
+          <strong>Marca:</strong>
+          {{ produto.marca }}
+        </p>
+
+        <p class="descricao">
+          {{ produto.descricao }}
+        </p>
+
+        <p class="preco">
+          R$ {{ produto.preco.toFixed(2) }}
+        </p>
+
+        <p class="quantidade">
+          <strong>Estoque:</strong>
+          {{ produto.quantidade }} unidades
+        </p>
+
+      </div>
+
+    </div>
+
+  }
+
+</div>

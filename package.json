@@ -1,0 +1,13 @@
+{
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "backend": "^0.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
