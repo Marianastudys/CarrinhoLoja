@@ -17,6 +17,6 @@ export class ProdutoService {
   }
 
   obterProdutoPorId(prodId: number): Observable<Produtos> {
-    return this.#http.get<Produtos>(`${this.url}/${prodId}`)
+    return this.http.get<Produtos>(`${this.url}/${prodId}`)
   }
 }

@@ -4,7 +4,11 @@ import express, {
   type Response
 } from 'express';
 
+import cors from 'cors';
+
 const app: Express = express();
+
+app.use(cors());
 
 const produtos = [
   {
