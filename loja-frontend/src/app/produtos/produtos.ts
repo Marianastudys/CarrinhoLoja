@@ -1,10 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, inject } from '@angular/core';
 import { ProdutoService } from '../loja-service';
+import { CarrinhoService } from '../carrinho-service';
+import { ExibeCarrinhoComponent } from '../exibe-carrinho/exibe-carrinho';
 
 @Component({
   selector: 'app-produtos',
   standalone: true,
-  imports: [],
+  imports: [ExibeCarrinhoComponent],
   templateUrl: './produtos.html',
   styleUrl: './produtos.scss'
 })
@@ -17,6 +19,8 @@ export class Produtos implements OnInit {
     private cd: ChangeDetectorRef
   ) {}
 
+ carrinho = inject(CarrinhoService);
+ 
   ngOnInit(): void {
 
     console.log('Componente iniciou');

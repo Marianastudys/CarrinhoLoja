@@ -1,5 +1,7 @@
 <h1>Lista de Produtos</h1>
 
+<app-exibe-carrinho></app-exibe-carrinho>
+
 <div class="lista-produtos">
 
   @for (produto of produtos; track produto.id) {
@@ -34,6 +36,9 @@
           <strong>Estoque:</strong>
           {{ produto.quantidade }} unidades
         </p>
+        <button class="btn btn-primary" (click)="carrinho.adicionarItem(produto)">
+          Adicionar ao carrinho
+        </button>
 
       </div>
 
