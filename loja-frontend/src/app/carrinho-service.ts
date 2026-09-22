@@ -68,4 +68,8 @@ export class CarrinhoService {
       0
     );
   }
+
+  mostrarItensCarrinho() {
+    
+  }
 }
