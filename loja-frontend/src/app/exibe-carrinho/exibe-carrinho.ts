@@ -1,10 +1,11 @@
 import { Component, computed, inject } from '@angular/core';
 import { CarrinhoService } from '../carrinho-service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-exibe-carrinho',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './exibe-carrinho.html'
 })
 export class ExibeCarrinhoComponent {

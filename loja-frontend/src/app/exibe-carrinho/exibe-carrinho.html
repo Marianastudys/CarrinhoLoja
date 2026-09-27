@@ -1,8 +1,5 @@
-<div>
-  Carrinho: {{ quantidade() }} produtos
-
-<button class="btn btn-primary" (click)="carrinho.mostrarItensCarrinho()">
-  Ver itens
+<button
+  class="btn btn-primary"
+  routerLink="/carrinho">
+  Carrinho ({{ quantidade() }} Produto(s))
 </button>
-
-</div>

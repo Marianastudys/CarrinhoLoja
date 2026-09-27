@@ -1,1 +1,62 @@
-<p>carrinho-compras works!</p>
+<div class="container mt-4">
+  <h2>Meu carrinho</h2>
+
+  @if (carrinho.itens().length === 0) {
+    <p>Seu carrinho está vazio.</p>
+  }
+
+  @for (item of carrinho.itens(); track item.id) {
+    <hr>
+    <div class="card mb-3">
+      <div class="card-body">
+
+        <h5 class="card-title">
+          {{ item.produto.nome }}
+        </h5>
+
+        <p>
+          Preço: {{ item.produto.preco | currency:'BRL' }}
+        </p>
+
+        <p>
+          Subtotal:
+          {{ item.produto.preco * item.quantidade | currency:'BRL' }}
+        </p>
+
+        <div class="d-flex align-items-center gap-2">
+
+          <button
+            class="btn btn-outline-primary"
+            (click)="carrinho.diminuirQuantidade(item.id)">
+            -
+          </button>
+
+          <span>{{ item.quantidade }}</span>
+
+          <button
+            class="btn btn-outline-primary"
+            (click)="carrinho.aumentarQuantidade(item.id)">
+            +
+          </button>
+
+          <button
+            class="btn btn-danger ms-3"
+            (click)="carrinho.removerItem(item.id)">
+            Excluir
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  }
+
+  <hr>
+
+  <div class="mt-4">
+    <h4>
+      Total da compra:
+      {{ carrinho.obterTotal() | currency:'BRL' }}
+    </h4>
+  </div>
+</div>
