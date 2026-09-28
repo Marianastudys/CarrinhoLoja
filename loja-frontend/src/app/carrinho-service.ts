@@ -1,10 +1,12 @@
 import { Injectable, signal } from '@angular/core';
 import { Produto } from './produto';
+
 export type Item = {
   id: number;
   produto: Produto;
   quantidade: number;
 };
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,6 +14,15 @@ export class CarrinhoService {
 
 
   itens = signal<Item[]>([]);
+
+  constructor() {
+    let itensSessao = this.recuperarSessao()
+    if (itensSessao) {
+      this.itens.set(itensSessao)
+    }
+
+
+  }
 
   adicionarItem(produto: Produto) {
     const item = this.itens().find(i => i.id === produto.id);
@@ -34,6 +45,7 @@ export class CarrinhoService {
         }
       ]);
     }
+    this.salvarSessao()
   }
 
   aumentarQuantidade(id: number) {
@@ -44,6 +56,7 @@ export class CarrinhoService {
           : item
       )
     );
+    this.salvarSessao()
   }
 
   diminuirQuantidade(id: number) {
@@ -71,5 +84,17 @@ export class CarrinhoService {
 
   mostrarItensCarrinho() {
     
+  }
+
+  //Persite o objeto de carrinho na sessão
+  salvarSessao() {
+    localStorage.setItem('CARRINHO_LOJA_IFRN', JSON.stringify(this.itens()))
+  }
+
+  recuperarSessao() {
+    let itens = localStorage.getItem('CARRINHO_LOJA_IFRN')
+    if (itens) {
+      return JSON.parse(itens)
+    }
   }
 }
